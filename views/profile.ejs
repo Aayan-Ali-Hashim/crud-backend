@@ -6,7 +6,7 @@
     <title>Document</title>
   </head>
   <body>
-    <form onsumbit="updateProfile(event)">
+    <form onsubmit="updateProfile(event)" type="submit">
       <label for="">username</label>
       <input type="text" name="username" value="<%= user.username %>" />
 
@@ -16,7 +16,7 @@
       <label for="">Phone number</label>
       <input type="number" name="mob" value="<%= user.phone %>" />
 
-      <button onclick="updateProfile(event)">Update</button>
+      <button>Update</button>
     </form>
   </body>
   <script>
