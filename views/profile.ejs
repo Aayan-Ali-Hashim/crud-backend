@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form onsumbit="updateProfile(event)">
+      <label for="">username</label>
+      <input type="text" name="username" value="<%= user.username %>" />
+
+      <label for="">email</label>
+      <input type="email" name="email" value="<%= user.email %>" />
+
+      <label for="">Phone number</label>
+      <input type="number" name="mob" value="<%= user.phone %>" />
+
+      <button onclick="updateProfile(event)">Update</button>
+    </form>
+  </body>
+  <script>
+    const updateProfile = async (event) => {
+      event.preventDefault()
+
+      const username = document.querySelector("input[name=username]").value
+      const email = document.querySelector("input[name=email]").value
+      const phone = document.querySelector("input[name=mob]").value
+
+      const res = await fetch("/users/<%= user.id %>", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, email, phone }),
+      })
+      window.location.href = "/"
+    }
+  </script>
+</html>
